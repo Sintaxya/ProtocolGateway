@@ -1,4 +1,6 @@
-﻿using Serilog;
+﻿using ProtocolGateway.Config;
+using ProtocolGateway.Protocols;
+using Serilog;
 using Serilog.Core;
 
 namespace ProtocolGateway
@@ -12,13 +14,10 @@ namespace ProtocolGateway
     }
     class ProtocolGatewayHandler : IHandler
     {
-        Logger ConsoleLogger, FileLogger;
+        Logger? ConsoleLogger, FileLogger;
         ProtocolFactory factory = new();
         GatewayParam gwParam;
         readonly int gwId;
-
-
-
         public ProtocolGatewayHandler(GatewayParam gatewayParam, int gatewayId)
         {
             gwParam = gatewayParam;
@@ -48,6 +47,7 @@ namespace ProtocolGateway
                 var server = factory.CreateServer(gwParam.source);
                 server.ListenFilter = gwParam.listen_address_filter;
                 server.Port = gwParam.listen_port;
+                server.RegisterHandler(this);
             }
         }
 
@@ -62,6 +62,31 @@ namespace ProtocolGateway
         }
 
         public void EndpointDataReceived()
+        {
+            Console.WriteLine("EndpointDataReceived");
+        }
+
+        public void EndpointDataSent()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EndpointConnection()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LocalConnection()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ConnectionLogger()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void TrafficLogger()
         {
             throw new NotImplementedException();
         }

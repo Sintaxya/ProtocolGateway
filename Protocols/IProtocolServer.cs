@@ -1,6 +1,6 @@
-﻿namespace ProtocolGateway
+﻿namespace ProtocolGateway.Protocols
 {
-    public interface IProtocolServer
+    public interface IProtocolServer: ISharedNetworkComponens
     {
         string ListenFilter { get; set; }
         int Port { get; set; }

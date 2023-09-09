@@ -1,19 +1,21 @@
 ﻿namespace ProtocolGateway.Protocols
 {
 
-    class TcpServer : IProtocolServer, ISharedNetworkComponens
+    class TcpServer : IProtocolServer
     {
+        private IHandler? _handler;
         public TcpServer()
         {
             Console.WriteLine("Hello !");
+            Task.Run(() => ServerStart());
         }
         public string ListenFilter { get; set; }
 
         public int Port { get; set; }
 
-        public string Name => throw new NotImplementedException();
+        public string Name { get; set; }
 
-        public bool Status => throw new NotImplementedException();
+        public bool Status { get; set; }
 
         public void OnClientConnected()
         {
@@ -25,16 +27,10 @@
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Send()
         {
             throw new NotImplementedException();
         }
-
         public void ServerStart()
         {
             throw new NotImplementedException();
@@ -44,14 +40,18 @@
         {
             throw new NotImplementedException();
         }
-
-        public void UnregisterHandler()
+        public void RegisterHandler(IHandler handler)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Registering handler");
+            _handler = handler;
+        }
+        public void UnregisterHandler(IHandler handler)
+        {
+            _handler = null;
         }
     }
 
-    class TcpClient : IProtocolClient, ISharedNetworkComponens
+    class TcpClient : IProtocolClient
     {
         public string DestinationIp { get; set; }
         public int DestinationPort { get; set; }
@@ -80,7 +80,7 @@
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler()
+        public void RegisterHandler(IHandler handler)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +90,7 @@
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler()
+        public void UnregisterHandler(IHandler handler)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
-﻿namespace ProtocolGateway
+﻿namespace ProtocolGateway.Protocols
 {
-    public interface IProtocolClient
+    public interface IProtocolClient : ISharedNetworkComponens
     {
         string DestinationIp { get; set; }
         int DestinationPort { get; set; }

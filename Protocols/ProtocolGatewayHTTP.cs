@@ -1,7 +1,7 @@
 ﻿namespace ProtocolGateway.Protocols
 {
 
-    class HTTPServer : IProtocolServer, ISharedNetworkComponens
+    class HTTPServer : IProtocolServer
     {
         public string ListenFilter { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Port { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -25,6 +25,11 @@
             throw new NotImplementedException();
         }
 
+        public void RegisterHandler(IHandler handler)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Send()
         {
             throw new NotImplementedException();
@@ -44,9 +49,14 @@
         {
             throw new NotImplementedException();
         }
+
+        public void UnregisterHandler(IHandler handler)
+        {
+            throw new NotImplementedException();
+        }
     }
 
-    class HTTPClient : IProtocolClient, ISharedNetworkComponens
+    class HTTPClient : IProtocolClient
     {
         public string DestinationIp { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int DestinationPort { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -80,12 +90,22 @@
             throw new NotImplementedException();
         }
 
+        public void RegisterHandler(IHandler handler)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Send()
         {
             throw new NotImplementedException();
         }
 
         public void UnregisterHandler()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UnregisterHandler(IHandler handler)
         {
             throw new NotImplementedException();
         }
