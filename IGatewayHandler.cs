@@ -1,6 +1,6 @@
 ﻿namespace ProtocolGateway
 {
-    public interface IHandler
+    public interface IGatewayHandler
     {
         void EndpointDataReceived();
 
