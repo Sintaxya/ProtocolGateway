@@ -1,7 +1,4 @@
 ﻿using ProtocolGateway.Config;
-using ProtocolGateway.Protocols;
-using Serilog;
-using Serilog.Core;
 
 namespace ProtocolGateway
 {
@@ -12,9 +9,8 @@ namespace ProtocolGateway
         websocket,
         http
     }
-    class ProtocolGatewayHandler : IHandler
+    class ProtocolGatewayHandler : IGatewayHandler
     {
-        Logger? ConsoleLogger, FileLogger;
         ProtocolFactory factory = new();
         GatewayParam gwParam;
         readonly int gwId;
@@ -22,22 +18,8 @@ namespace ProtocolGateway
         {
             gwParam = gatewayParam;
             gwId = gatewayId;
-            SetupLoggers();
             StartServer();
             StartClient();
-        }
-
-
-        void SetupLoggers()
-        {
-            if (gwParam.logging_to_console)
-            {
-                ConsoleLogger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
-            }
-            if (gwParam.logging_to_file)
-            {
-                FileLogger = new LoggerConfiguration().WriteTo.File($"gw_{gwId}").CreateLogger();
-            }
         }
 
         void StartServer()
