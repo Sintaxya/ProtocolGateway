@@ -1,9 +1,10 @@
-﻿namespace ProtocolGateway.Protocols
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace ProtocolGateway.Protocols
 {
 
     class TcpServer : IProtocolServer
     {
-        private IHandler? _handler;
         public TcpServer()
         {
             Console.WriteLine("Hello !");
@@ -16,7 +17,9 @@
         public string Name { get; set; }
 
         public bool Status { get; set; }
+        public IGatewayHandler Handler { get => _handler; set => _handler = value; }
 
+        private IGatewayHandler _handler;
         public void OnClientConnected()
         {
             throw new NotImplementedException();
@@ -25,6 +28,11 @@
         public void Receive()
         {
             throw new NotImplementedException();
+        }
+
+        public void RegisterHandler(IGatewayHandler handler)
+        {
+            _handler = handler;
         }
 
         public void Send()
@@ -40,14 +48,10 @@
         {
             throw new NotImplementedException();
         }
-        public void RegisterHandler(IHandler handler)
+
+        public void UnregisterHandler(IGatewayHandler handler)
         {
-            Console.WriteLine("Registering handler");
-            _handler = handler;
-        }
-        public void UnregisterHandler(IHandler handler)
-        {
-            _handler = null;
+            throw new NotImplementedException();
         }
     }
 
@@ -59,6 +63,8 @@
         public string Name => throw new NotImplementedException();
 
         public bool Status => throw new NotImplementedException();
+
+        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void ClientStart()
         {
@@ -80,7 +86,7 @@
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler(IHandler handler)
+        public void RegisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +96,7 @@
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler(IHandler handler)
+        public void UnregisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }

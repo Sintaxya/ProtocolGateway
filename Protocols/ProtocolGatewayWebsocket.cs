@@ -9,6 +9,8 @@
 
         public bool Status => throw new NotImplementedException();
 
+        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void OnClientConnected()
         {
             throw new NotImplementedException();
@@ -23,7 +25,7 @@
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler(IHandler handler)
+        public void RegisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }
@@ -48,7 +50,7 @@
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler(IHandler handler)
+        public void UnregisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }
@@ -62,6 +64,8 @@
         public string Name => throw new NotImplementedException();
 
         public bool Status => throw new NotImplementedException();
+
+        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void ClientStart()
         {
@@ -88,7 +92,7 @@
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler(IHandler handler)
+        public void RegisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }
@@ -103,7 +107,7 @@
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler(IHandler handler)
+        public void UnregisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }
