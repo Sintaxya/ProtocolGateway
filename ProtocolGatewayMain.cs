@@ -9,13 +9,13 @@ namespace ProtocolGateway
         private static void Main()
         {
             ProtocolGatewayConfig config = new();
-            StartHandlers(config);
+            StartHandlers(config.GetConfigInstance());
         }
 
-        static void StartHandlers(ProtocolGatewayConfig config)
+        static void StartHandlers(ConfigStructure config)
         {
             int gatewayId = 1;
-            foreach (var gateway in config.config.gateway_params)
+            foreach (var gateway in config.gateway_params)
             {
                 if (gateway != null & Convert.ToBoolean(gateway.enabled))
                 {
