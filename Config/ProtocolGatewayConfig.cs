@@ -7,7 +7,7 @@ namespace ProtocolGateway.Config
         private static string ConfigName => "config.json";
         private static string ConfigPath => Path.GetFullPath(ConfigName);
 
-        public ConfigStructure config;
+        private ConfigStructure config;
         public ProtocolGatewayConfig()
         {
             GetConfig();
@@ -17,7 +17,11 @@ namespace ProtocolGateway.Config
             string json = File.ReadAllText(ConfigPath);
 
             config = JsonConvert.DeserializeObject<ConfigStructure>(json);
+        }
 
+        public ConfigStructure GetConfigInstance()
+        {
+            return config;
         }
     }
     public class ConfigStructure
