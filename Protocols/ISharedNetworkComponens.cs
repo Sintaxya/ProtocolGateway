@@ -1,4 +1,6 @@
-﻿namespace ProtocolGateway.Protocols
+﻿using System.Reflection.Metadata;
+
+namespace ProtocolGateway.Protocols
 {
     public interface ISharedNetworkComponens
     {
@@ -6,7 +8,8 @@
         bool Status { get; }
         void Receive();
         void Send();
-        void RegisterHandler(IHandler handler);
-        void UnregisterHandler(IHandler handler);
+        IGatewayHandler Handler { get; set; }
+        public void RegisterHandler(IGatewayHandler handler);
+    public void UnregisterHandler(IGatewayHandler handler);
     }
 }
