@@ -7,6 +7,5 @@
         void ClientStart();
         void ClientStop();
         void OnConnect();
-
     }
 }
