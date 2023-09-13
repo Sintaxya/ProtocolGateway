@@ -19,7 +19,8 @@ namespace ProtocolGateway
             {
                 if (gateway != null & Convert.ToBoolean(gateway.enabled))
                 {
-                    var handler = new ProtocolGatewayHandler(gateway, gatewayId);
+                    var logger = new LoggingHandler(gatewayId, gateway.logging_to_file, gateway.logging_to_console);
+                    var handler = new ProtocolGatewayHandler(gateway, gatewayId, logger);
                 }
                 gatewayId++;
             }
