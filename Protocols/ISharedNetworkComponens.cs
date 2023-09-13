@@ -8,8 +8,6 @@ namespace ProtocolGateway.Protocols
         bool Status { get; }
         void Receive();
         void Send();
-        IGatewayHandler Handler { get; set; }
-        public void RegisterHandler(IGatewayHandler handler);
-    public void UnregisterHandler(IGatewayHandler handler);
+        LoggingHandler LoggingHandler { get; set; }
     }
 }
