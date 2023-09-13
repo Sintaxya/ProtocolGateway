@@ -17,31 +17,28 @@ namespace ProtocolGateway.Protocols
         public string Name { get; set; }
 
         public bool Status { get; set; }
-        public IGatewayHandler Handler { get => _handler; set => _handler = value; }
+        public LoggingHandler LoggingHandler { get => _loggingHandler; set => _loggingHandler = value; }
 
-        private IGatewayHandler _handler;
+        private LoggingHandler _loggingHandler;
+        public int ListenPort { get => _listenPort; set => _listenPort = value; }
+        public string _listenFilter { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        private int _listenPort;
         public void OnClientConnected()
         {
             throw new NotImplementedException();
         }
-
         public void Receive()
         {
             throw new NotImplementedException();
         }
-
-        public void RegisterHandler(IGatewayHandler handler)
-        {
-            _handler = handler;
-        }
-
         public void Send()
         {
             throw new NotImplementedException();
         }
         public void ServerStart()
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public void ServerStop()
@@ -49,22 +46,17 @@ namespace ProtocolGateway.Protocols
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     class TcpClient : IProtocolClient
     {
         public string DestinationIp { get; set; }
         public int DestinationPort { get; set; }
-
         public string Name => throw new NotImplementedException();
-
         public bool Status => throw new NotImplementedException();
+        public LoggingHandler LoggingHandler { get => _loggingHandler; set => _loggingHandler = value; }
 
-        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        private LoggingHandler _loggingHandler;
 
         public void ClientStart()
         {
@@ -86,17 +78,7 @@ namespace ProtocolGateway.Protocols
             throw new NotImplementedException();
         }
 
-        public void RegisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Send()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnregisterHandler(IGatewayHandler handler)
         {
             throw new NotImplementedException();
         }

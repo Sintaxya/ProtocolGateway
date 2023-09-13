@@ -8,8 +8,8 @@
         public string Name => throw new NotImplementedException();
 
         public bool Status => throw new NotImplementedException();
-
-        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int ListenPort { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public LoggingHandler LoggingHandler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void OnClientConnected()
         {
@@ -20,17 +20,6 @@
         {
             throw new NotImplementedException();
         }
-
-        public void RegisterHandler()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Send()
         {
             throw new NotImplementedException();
@@ -45,16 +34,6 @@
         {
             throw new NotImplementedException();
         }
-
-        public void UnregisterHandler()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnregisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     class UdpClient : IProtocolClient
@@ -66,7 +45,7 @@
 
         public bool Status => throw new NotImplementedException();
 
-        public IGatewayHandler Handler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public LoggingHandler LoggingHandler { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void ClientStart()
         {
@@ -87,30 +66,10 @@
         {
             throw new NotImplementedException();
         }
-
-        public void RegisterHandler()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RegisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Send()
         {
             throw new NotImplementedException();
         }
 
-        public void UnregisterHandler()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnregisterHandler(IGatewayHandler handler)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
