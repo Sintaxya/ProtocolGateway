@@ -4,14 +4,14 @@ namespace ProtocolGateway
 {
     public class ProtocolFactory
     {
-        private readonly Dictionary<string, Type> serversEnum = new()
+        private readonly Dictionary<string, Type> serverTypes = new()
         {
                 { "tcp" , typeof(TcpServer)},
                 { "udp" , typeof(UdpServer)},
                 { "websocket" , typeof(WebsocketServer)},
                 { "http" , typeof(HTTPServer)},
             };
-        private readonly Dictionary<string, Type> clientsEnum = new()
+        private readonly Dictionary<string, Type> clientTypes = new()
         {
                 { "tcp" , typeof(TcpClient)},
                 { "udp" , typeof(UdpClient)},
@@ -20,7 +20,7 @@ namespace ProtocolGateway
             };
         internal IProtocolClient CreateClient(string clientClass)
         {
-            if (clientsEnum.TryGetValue(clientClass, out Type? clientType))
+            if (clientTypes.TryGetValue(clientClass, out Type? clientType))
             {
                 return (IProtocolClient)Activator.CreateInstance(clientType);
             }
@@ -29,10 +29,9 @@ namespace ProtocolGateway
                 throw new ArgumentException($"Invalid client type: {clientClass}");
             }
         }
-
         internal IProtocolServer CreateServer(string serverClass)
         {
-            if (serversEnum.TryGetValue(serverClass, out Type serverType))
+            if (serverTypes.TryGetValue(serverClass, out Type serverType))
             {
                 return (IProtocolServer)Activator.CreateInstance(serverType);
             }
