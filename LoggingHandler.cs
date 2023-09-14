@@ -8,6 +8,7 @@ namespace ProtocolGateway
     {
         public Logger? ConsoleLogger, FileLogger;
         private int loggerId;
+        string _gatewayName;
         void SetupConsoleLogger()
         {
             ConsoleLogger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
@@ -55,11 +56,11 @@ namespace ProtocolGateway
 
         public void LogHandlerStart()
         {
-            FileLogger?.Information($"Handler for Protocol Gateway with ID: {loggerId} --> Started");
-            ConsoleLogger?.Information($"Handler for Protocol Gateway with ID: {loggerId} --> Started");
+            FileLogger?.Information($"{_gatewayName} Handler started.");
+            ConsoleLogger?.Information($"{_gatewayName} Handler started.");
         }
 
-        public LoggingHandler(int id, bool fileLoggingEnabled, bool consoleLoggingEnabled)
+        public LoggingHandler(int id, bool fileLoggingEnabled, bool consoleLoggingEnabled, string name)
         {
             loggerId = id;
             if (fileLoggingEnabled)
@@ -69,6 +70,14 @@ namespace ProtocolGateway
             if (consoleLoggingEnabled)
             {
                 SetupConsoleLogger();
+            }
+            if (name != null)
+            {
+                _gatewayName = $"[ {name} ]";
+            }
+            else
+            {
+                _gatewayName = $"[ GW-{loggerId} ]";
             }
         }
     }
