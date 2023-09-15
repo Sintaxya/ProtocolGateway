@@ -1,8 +1,6 @@
-﻿using Serilog.Core;
-
-namespace ProtocolGateway.Protocols
+﻿namespace ProtocolGateway.Protocols
 {
-    public interface IProtocolServer: ISharedNetworkComponens
+    public interface IProtocolServer: ISharedNetworkComponents
     {
         string ListenFilter { get; set; }
         int ListenPort { get ; set; }
