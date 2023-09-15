@@ -1,6 +1,5 @@
 ﻿using Serilog;
 using Serilog.Core;
-using System;
 
 namespace ProtocolGateway
 {
@@ -16,7 +15,7 @@ namespace ProtocolGateway
 
         void SetupFileLogger()
         {
-            FileLogger = new LoggerConfiguration().WriteTo.File($"gw_{loggerId}").CreateLogger();
+            FileLogger = new LoggerConfiguration().WriteTo.File($"gw_{loggerId}.txt").CreateLogger();
         }
 
         public void LogRemoteConnection()
@@ -71,7 +70,7 @@ namespace ProtocolGateway
             {
                 SetupConsoleLogger();
             }
-            if (name != null)
+            if (name != null && name != "")
             {
                 _gatewayName = $"[ {name} ]";
             }
