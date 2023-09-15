@@ -1,5 +1,4 @@
 ﻿using ProtocolGateway.Config;
-using Serilog.Core;
 
 namespace ProtocolGateway
 {
@@ -10,7 +9,7 @@ namespace ProtocolGateway
         websocket,
         http
     }
-    class ProtocolGatewayHandler
+    public class ProtocolGatewayHandler
     {
         ProtocolFactory factory = new();
         GatewayParam gwParam;
@@ -34,6 +33,7 @@ namespace ProtocolGateway
                 server.ListenFilter = gwParam.listen_address_filter;
                 server.ListenPort = gwParam.listen_port;
                 server.LoggingHandler = _loggingHandler;
+                server.GatewayHandler = this;
             }
         }
 
@@ -45,6 +45,7 @@ namespace ProtocolGateway
                 client.DestinationIp = gwParam.destination_ip;
                 client.DestinationPort = gwParam.destination_port;
                 client.LoggingHandler = _loggingHandler;
+                client.GatewayHandler = this;
             }
         }
 
