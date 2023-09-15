@@ -1,27 +1,23 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace ProtocolGateway.Protocols
+﻿namespace ProtocolGateway.Protocols
 {
 
     class TcpServer : IProtocolServer
     {
         public TcpServer()
         {
-            Console.WriteLine("Hello !");
             Task.Run(() => ServerStart());
         }
-        public string ListenFilter { get; set; }
-
-        public int Port { get; set; }
-
-        public string Name { get; set; }
-
-        public bool Status { get; set; }
+        public string ListenFilter { get => _listenFilter; set => _listenFilter = value; }
+        private string _listenFilter;
+        public bool Status { get => _status; set => _status = value; }
+        private bool _status;
         public LoggingHandler LoggingHandler { get => _loggingHandler; set => _loggingHandler = value; }
 
         private LoggingHandler _loggingHandler;
         public int ListenPort { get => _listenPort; set => _listenPort = value; }
-        public string _listenFilter { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ProtocolGatewayHandler GatewayHandler { get => _gatewayHandler; set => _gatewayHandler = value; }
+
+        private ProtocolGatewayHandler _gatewayHandler;
 
         private int _listenPort;
         public void OnClientConnected()
@@ -43,21 +39,26 @@ namespace ProtocolGateway.Protocols
 
         public void ServerStop()
         {
-            throw new NotImplementedException();
+            _status = false;
         }
 
     }
 
     class TcpClient : IProtocolClient
     {
-        public string DestinationIp { get; set; }
-        public int DestinationPort { get; set; }
-        public string Name => throw new NotImplementedException();
-        public bool Status => throw new NotImplementedException();
+        public string DestinationIp { get => _destinationIp; set => _destinationIp = value; }
+
+        private string _destinationIp;
+        public int DestinationPort { get => _destinationPort; set => _destinationPort = value; }
+        private int _destinationPort;
+        public bool Status { get => _status; set => _status = value; }
+        private bool _status;
         public LoggingHandler LoggingHandler { get => _loggingHandler; set => _loggingHandler = value; }
 
         private LoggingHandler _loggingHandler;
+        public ProtocolGatewayHandler GatewayHandler { get => _gatewayHandler; set => _gatewayHandler = value; }
 
+        private ProtocolGatewayHandler _gatewayHandler;
         public void ClientStart()
         {
             throw new NotImplementedException();
