@@ -1,6 +1,4 @@
 ﻿using ProtocolGateway.Config;
-using Serilog;
-using System.Linq.Expressions;
 
 namespace ProtocolGateway
 {
