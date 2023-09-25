@@ -32,6 +32,10 @@
             throw new NotImplementedException();
         }
 
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class WebsocketClient : IProtocolClient
@@ -78,5 +82,9 @@
             throw new NotImplementedException();
         }
 
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

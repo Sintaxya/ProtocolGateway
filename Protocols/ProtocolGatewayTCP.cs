@@ -34,6 +34,7 @@
         }
         public void ServerStart()
         {
+            _gatewayHandler.DataReceived += OnDataReceived;
             return;
         }
 
@@ -42,6 +43,10 @@
             _status = false;
         }
 
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class TcpClient : IProtocolClient
@@ -80,6 +85,11 @@
         }
 
         public void Send()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
         {
             throw new NotImplementedException();
         }

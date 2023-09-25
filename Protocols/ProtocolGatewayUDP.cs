@@ -33,6 +33,11 @@
         {
             throw new NotImplementedException();
         }
+
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class UdpClient : IProtocolClient
@@ -69,5 +74,9 @@
             throw new NotImplementedException();
         }
 
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

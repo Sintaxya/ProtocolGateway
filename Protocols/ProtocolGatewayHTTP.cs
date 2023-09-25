@@ -57,6 +57,11 @@
         {
             throw new NotImplementedException();
         }
+
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     class HTTPClient : IProtocolClient
@@ -113,6 +118,11 @@
         }
 
         void ISharedNetworkComponents.Send()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDataReceived(object sender, DataReceivedEventArgs e)
         {
             throw new NotImplementedException();
         }
