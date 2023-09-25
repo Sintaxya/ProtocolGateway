@@ -7,5 +7,7 @@
         void Send();
         LoggingHandler LoggingHandler { get; set; }
         ProtocolGatewayHandler GatewayHandler { get; set; }
+        void OnDataReceived(object sender, DataReceivedEventArgs e);
+
     }
 }
