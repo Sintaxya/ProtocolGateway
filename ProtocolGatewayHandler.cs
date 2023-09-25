@@ -15,6 +15,8 @@ namespace ProtocolGateway
         GatewayParam gwParam;
         readonly int gwId;
         LoggingHandler _loggingHandler;
+        public delegate void DataReceivedEventHandler(object sender, DataReceivedEventArgs e);
+        public event DataReceivedEventHandler DataReceived;
         public ProtocolGatewayHandler(GatewayParam gatewayParam, int gatewayId, LoggingHandler loggingHandler)
         {
             gwParam = gatewayParam;
